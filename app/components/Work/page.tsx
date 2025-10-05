@@ -111,13 +111,11 @@ const HowItWorks = () => {
 
           {/* Right Side - Long-Form Content Writer */}
           <div className='flex justify-center items-center md:items-left flex-col mt-9 md:mt-0'>
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-purple-200 to-purple-300 bg-clip-text text-transparent mb-6">
+            <h2 className="text-4xl md:text-5xl  font-bold bg-gradient-to-r from-white via-purple-200 to-purple-300 bg-clip-text text-transparent mb-6">
               Long-Form AI Content Writer
             </h2>
-            <p className="text-white text-lg mb-6 leading-relaxed">
+            <p className="text-white text-lg mb-6 text-center leading-relaxed">
               Turn a short description into a 1,000+ word article with our AI-powered content writer.
-            </p>
-            <p className="text-white text-lg mb-8 leading-relaxed">
               Generate any article element such as titles, intros, outlines, content, 
               or conclusions. Write unlimited SEO-optimized and plagiarism-free 
               content for your blog.
