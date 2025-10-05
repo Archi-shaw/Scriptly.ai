@@ -1,9 +1,9 @@
 "use client"
 import React, { useState } from 'react';
-import LoginModal from "../Login/page"; // adjust path if needed
+import LoginModal from "../Login/page";
 
 const FAQSection = () => {
-  const [openFAQ, setOpenFAQ] = useState(2); // Third question is open by default
+  const [openFAQ, setOpenFAQ] = useState(2);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   const faqs = [
@@ -41,21 +41,18 @@ const FAQSection = () => {
     }
   ];
 
-  const toggleFAQ = (index) => {
+  const toggleFAQ = (index:any) => {
     setOpenFAQ(openFAQ === index ? null : index);
   };
 
   return (
     <div className="relative py-16 px-4 mt-16">
       <div className="max-w-4xl mx-auto">
-        {/* FAQ Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
             Frequently Asked Questions
           </h2>
         </div>
-
-        {/* FAQ Items */}
         <div className="space-y-4 mb-16">
           {faqs.map((faq, index) => (
             <div
@@ -64,9 +61,9 @@ const FAQSection = () => {
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+                className="w-full flex items-center justify-between p-6 text-left text-white hover:text-black hover:bg-gray-50 transition-colors"
               >
-                <span className="text-lg font-semibold text-black">
+                <span className="text-lg font-semibold">
                   {faq.question}
                 </span>
                 <div className="flex-shrink-0 ml-4">
@@ -110,23 +107,6 @@ const FAQSection = () => {
               )}
             </div>
           ))}
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center bg-gray-50 rounded-2xl py-12 px-8">
-          <p className="text-[#603699] font-semibold text-sm uppercase tracking-wide mb-4">
-            BOOST YOUR WRITING PRODUCTIVITY
-          </p>
-          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            End writer's block today
-          </h3>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-8">
-            It's like having access to a team of copywriting experts writing powerful copy for you in 1-click.
-          </p>
-          <button               onClick={() => setShowLoginModal(true)}
-          className="bg-[#603699] text-white px-8 py-4 rounded-lg  cursor-pointer font-semibold text-lg hover:bg-[#4D2C7D] transition-colors shadow-lg">
-            Start Writing For Free
-          </button>
         </div>
       </div>
          <LoginModal

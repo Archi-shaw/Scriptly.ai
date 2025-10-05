@@ -4,14 +4,16 @@ import { useState, useEffect } from 'react';
 import Work from "@/app/components/Work/page"
 import Navbar from '@/app/components/Navbar/page'
 import Hero from '@/app/components/Hero/page'
+import Long from "@/app/components/Long/page"
 import Pricing from "@/app/components/Pricing/page"
+import Feature from "@/app/components/Feature/page"
 import FAQ from "@/app/components/FAQ/page"
 import Footer from  "@/app/components/Footer/page"
 export default function AIStartupLanding() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e:any) => {
       setMousePosition({
         x: (e.clientX / window.innerWidth) * 100,
         y: (e.clientY / window.innerHeight) * 100,
@@ -62,9 +64,19 @@ rgb(31, 4, 78) 75%,
       </div>
       <Navbar />
      <Hero />
+      <section id='works'>
      <Work />
+      </section>
+      <Long />
+      <section id='features'>
+     <Feature />
+      </section>
+      <section id='pricing'>
      <Pricing />
+      </section>
+      <section id='faq'>
      <FAQ />
+      </section>
      <Footer />
     </div>
   );

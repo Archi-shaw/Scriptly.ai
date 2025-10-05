@@ -7,8 +7,8 @@ const page = () => {
   return (
     <div>
         <div className="relative z-10 flex flex-col items-center mt-36 min-h-screen px-6  text-center">
-        <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
-          <span className="bg-gradient-to-r from-white via-purple-200 to-purple-300 bg-clip-text text-transparent">
+        <h1 className="text-5xl md:text-6xl z-10 font-bold text-white mb-8 leading-tight">
+          <span className="bg-gradient-to-r  from-white via-purple-200 to-purple-300 bg-clip-text text-transparent">
             Generate Content,
           </span>
           <br />
@@ -33,7 +33,7 @@ const page = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
           </button>
 
-          <button className="group relative px-8 py-4 bg-gray-900 text-white font-semibold rounded-xl border border-gray-700 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-purple-500">
+          <button className="group relative px-8 py-4 bg-black text-white font-semibold rounded-xl border border-gray-700 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-purple-500">
             <div className="flex">
               <span>No credit card required</span>
             </div>
