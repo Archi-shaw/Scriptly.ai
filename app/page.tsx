@@ -1,15 +1,15 @@
 "use client"
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Work from "@/app/components/Work/page"
-import Navbar from '@/app/components/Navbar/page'
-import Hero from '@/app/components/Hero/page'
-import Long from "@/app/components/Long/page"
-import Pricing from "@/app/components/Pricing/page"
-import Feature from "@/app/components/Feature/page"
-import FAQ from "@/app/components/FAQ/page"
-import Footer from  "@/app/components/Footer/page"
-export default function AIStartupLanding() {
+import Work from "@/app/components/Landing/Work/page"
+import Navbar from '@/app/components/Landing/Navbar/page'
+import Hero from '@/app/components/Landing/Hero/page'
+import Long from "@/app/components/Landing/Long/page"
+import Pricing from "@/app/components/Landing/Pricing/page"
+import Feature from "@/app/components/Landing/Feature/page"
+import FAQ from "@/app/components/Landing/FAQ/page"
+import Footer from  "@/app/components/Landing/Footer/page"
+export default function Landing() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
