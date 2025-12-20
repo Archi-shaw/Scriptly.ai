@@ -1,9 +1,8 @@
 "use client";
-
 import React, { useEffect } from "react";
 import { X } from "lucide-react";
 import { signIn, useSession, signOut } from "next-auth/react";
-import { useRouter } from "next/navigation"; // Next.js 13+ useRouter
+import { useRouter } from "next/navigation";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -46,7 +45,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 onClick={handleSocialLogin}
                 className="w-full flex items-center justify-center gap-3 py-3 px-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all"
               >
-                {/* Google SVG */}
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path
                     fill="#EA4335"
