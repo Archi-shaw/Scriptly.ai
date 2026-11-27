@@ -1,8 +1,0 @@
-added a few schemas reequired for the db
-User, Order, Credit Transaction, Credit Package
-next task - 
-add signup and authentication using jwt and 2 factor authentication via email.
-
-during signup, the user needs to enter the verification email he received in his mail to get his email verified. then only the user will be created.
-
-when a user tries to log in, he will be asked for a verification code which will be sent to his email. only after entering the code will be able to login.
