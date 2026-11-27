@@ -1,4 +1,167 @@
 @import "tailwindcss";
-html{
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Scriptly.ai design tokens. The product is dark-first: one palette is used
+ * across the landing page, auth screens and the authenticated workspace.
+ */
+:root {
+  --radius: 0.75rem;
+
+  --background: #09080f;
+  --foreground: #f4f3f8;
+  --card: #110f1a;
+  --card-foreground: #f4f3f8;
+  --popover: #15131f;
+  --popover-foreground: #f4f3f8;
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+  --secondary: #1c1a29;
+  --secondary-foreground: #e9e7f2;
+  --muted: #18161f;
+  --muted-foreground: #a19db4;
+  --accent: #221f33;
+  --accent-foreground: #f4f3f8;
+  --destructive: #e5484d;
+  --success: #22c55e;
+  --warning: #f5a524;
+  --border: #262336;
+  --input: #2d2a3f;
+  --ring: #8b5cf6;
+  --brand: #a78bfa;
+
+  --sidebar: #0c0b13;
+  --sidebar-foreground: #d9d6e6;
+  --sidebar-primary: #7c3aed;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1b1828;
+  --sidebar-accent-foreground: #f4f3f8;
+  --sidebar-border: #1f1c2c;
+  --sidebar-ring: #8b5cf6;
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --animate-caret-blink: caret-blink 1.1s ease-out infinite;
+  --animate-fade-up: fade-up 0.5s ease-out both;
+}
+
+@keyframes caret-blink {
+  0%,
+  70%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
     scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--primary) 45%, transparent);
+    color: #fff;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Gradient text used for headings across marketing and app surfaces. */
+  .text-gradient {
+    background-image: linear-gradient(100deg, #ffffff 0%, #e9d5ff 45%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Rendered Markdown (AI output preview, exports). */
+  .content-prose {
+    @apply prose prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-brand prose-strong:text-foreground prose-code:before:content-none prose-code:after:content-none prose-pre:bg-muted prose-pre:border prose-pre:border-border prose-blockquote:border-l-primary prose-hr:border-border prose-th:text-foreground;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
 }

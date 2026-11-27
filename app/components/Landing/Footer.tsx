@@ -1,109 +1,99 @@
-"use client"
-import Head from 'next/head'
-import Image from 'next/image'
-import { useState } from 'react'
-import LoginModal from "../Login/page"; 
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import Logo from "@/app/components/Essentials/Logo";
 
-export default function Home() {
-  const [email, setEmail] = useState('')
-  const [showLoginModal, setShowLoginModal] = useState(false);
+const supportEmail = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@scriptly.ai";
 
-  const handleSubmit = (e:any) => {
-    e.preventDefault()
-    console.log('Email submitted:', email)
-  }
+const columns = [
+  {
+    title: "Product",
+    links: [
+      { label: "How it works", href: "/#works" },
+      { label: "Features", href: "/#features" },
+      { label: "Templates", href: "/#templates" },
+      { label: "Pricing", href: "/#pricing" },
+      { label: "FAQ", href: "/#faq" },
+    ],
+  },
+  {
+    title: "Popular templates",
+    links: [
+      { label: "Blog Post Generator", href: "/write?template=blog-post" },
+      { label: "Facebook Ad Copy", href: "/write?template=facebook-ad" },
+      { label: "Product Description", href: "/write?template=product-description" },
+      { label: "Cold Outreach Email", href: "/write?template=cold-outreach-email" },
+      { label: "YouTube Video Script", href: "/write?template=youtube-script" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "Contact us", href: `mailto:${supportEmail}` },
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Log in", href: "/login" },
+      { label: "Sign up", href: "/signup" },
+    ],
+  },
+];
 
+export default function Footer() {
   return (
-    <div className="min-h-screen relative z-10 bg-transparent ">
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto text-center px-4">
-          <p className="text-white font-semibold mb-2 ">BOOST YOUR WRITING PRODUCTIVITY</p>
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-white via-purple-200 to-purple-300 bg-clip-text text-transparent mb-6">
-            End writer's block today
-          </h2>
-          <p className="text-xl text-white mb-8">
-            It's like having access to a team of copywriting experts writing powerful copy for you in 1-click.
+    <div className="relative">
+      <section className="px-4 py-24">
+        <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-gradient-to-br from-violet-600/25 via-violet-900/20 to-transparent p-10 text-center sm:p-14">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-violet-300">Boost your writing productivity</p>
+          <h2 className="text-gradient mb-5 text-3xl font-bold tracking-tight sm:text-4xl">End writer&apos;s block today</h2>
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-white/75">
+            It&apos;s like having a team of expert copywriters on call — writing in your voice, in seconds.
           </p>
-          
-          <button   onClick={() => setShowLoginModal(true)}
-          className="bg-white text-black px-8 py-3 rounded-lg  cursor-pointer text-lg font-semibold hover:bg-blue-700 transition-colors mb-8">
-            Start your free trial →
-          </button>
-          
-          <div className="flex justify-center items-center space-x-8 text-sm text-white">
-            <div className="flex items-center">
-              <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
-              50+ tools to explore
-            </div>
-            <div className="flex items-center">
-              <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
-              No credit card required
-            </div>
-            <div className="flex items-center">
-              <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
-              Cancel anytime
-            </div>
+          <Link
+            href="/signup"
+            className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-3.5 text-lg font-semibold text-black transition hover:-translate-y-0.5 hover:shadow-xl"
+          >
+            Start writing for free <ArrowRight className="size-5" aria-hidden />
+          </Link>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-white/70">
+            {["80+ templates to explore", "No credit card required", "Credits never expire"].map((item) => (
+              <span key={item} className="flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-violet-400" />
+                {item}
+              </span>
+            ))}
           </div>
         </div>
       </section>
-      <footer className="py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="md:col-span-1">
-              <div className="flex items-center mb-4">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">C</span>
-                </div>
-                <span className="ml-2 text-xl font-bold text-white">Copymatic</span>
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Save time. Get inspired.</h3>
-              <p className="text-white text-sm mb-4">
-                Automatically generate blog articles, website copy, landing pages & digital ads for your 
-                business in seconds. Unleash the most advanced AI writer to boost your traffic and productivity.
-              </p>
-              <p className="text-white text-xs">© 2025 Copymatic. All rights reserved.</p>
-            </div>
 
-            <div>
-              <h4 className="font-semibold text-white mb-4">USE CASES</h4>
-              <ul className="space-y-2 text-sm text-white">
-                <li><a href="#" className="hover:text-blue-600">AI Rewriter</a></li>
-                <li><a href="#" className="hover:text-blue-600">AI Article Writer</a></li>
-                <li><a href="#" className="hover:text-blue-600">AI Content Generator</a></li>
-                <li><a href="#" className="hover:text-blue-600">About Us Page Generator</a></li>
-                <li><a href="#" className="hover:text-blue-600">Subject Lines Generator</a></li>
-                <li><a href="#" className="hover:text-blue-600">AI Text Completer</a></li>
-                <li><a href="#" className="hover:text-blue-600">Text Rewriter & Spinner</a></li>
-                <li><a href="#" className="hover:text-blue-600">ChatGPT Alternative</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4">ABOUT</h4>
-              <ul className="space-y-2 text-sm text-white">
-                <li><a href="#pricing" className="hover:text-blue-600">Pricing</a></li>
-                <li><a href="#" className="hover:text-blue-600">Blog</a></li>
-                <li><a href="#" className="hover:text-blue-600">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-blue-600">Terms & Conditions</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4">SCRIPTY.AI</h4>
-              <ul className="space-y-2 text-sm text-white">
-                <li><a href="#" className="hover:text-blue-600">Contact Us</a></li>
-                <li><a href="#" className="hover:text-blue-600">FAQ</a></li>
-                <li><a href="#" className="hover:text-blue-600">@ScriptyAI</a></li>
-                <li><a href="#" className="hover:text-blue-600">Affiliate Program</a></li>
-              </ul>
-            </div>
+      <footer className="border-t border-white/10 px-4 py-14">
+        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div>
+            <Logo />
+            <p className="mt-4 text-sm font-semibold text-white">Save time. Get inspired.</p>
+            <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/60">
+              Generate blog articles, website copy, ads, emails and video scripts for your business in seconds — then
+              edit and export them in one place.
+            </p>
           </div>
+          {columns.map((column) => (
+            <div key={column.title}>
+              <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-white/90">{column.title}</h3>
+              <ul className="space-y-2.5 text-sm">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    <Link href={link.href} className="text-white/60 transition hover:text-violet-300">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-           <LoginModal
-        isOpen={showLoginModal}
-        onClose={() => setShowLoginModal(false)}
-      />
+        <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Scriptly.ai. All rights reserved.</p>
+          <p>Built by GannaG TechVentures</p>
+        </div>
       </footer>
     </div>
-  )
+  );
 }
